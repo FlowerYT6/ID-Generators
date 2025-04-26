@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Generator with Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML ID Generator with Options</h1>
+    <p>Select an ID type and click the button to generate:</p>
+    
+    <select id="idType">
+        <option value="current">Current ID</option>
+        <option value="flower">Flower ID</option> <!-- Updated option -->
+    </select>
+    
+    <button onclick="generateId()">Generate ID</button>
+    
+    <div id="output"></div>
+
+    <script>
+        function generateId() {
+            const selectedType = document.getElementById('idType').value;
+            let prefix = '';
+            let randomString = '';
+
+            if (selectedType === 'current') {
+                prefix = 'current_'; // Prefix for 'Current' type ID
+                randomString = Math.random().toString(36).substring(2, 15).toUpperCase(); // Simple alphanumeric ID
+            } else if (selectedType === 'flower') {
+                prefix = 'FLOWER_'; // Prefix for 'Flower' type ID
+                randomString = generateFlowerRandomString(); // Generate Flower-style ID with symbols
+            }
+
+            const uniqueId = prefix + randomString; // Combine the prefix with the random string
+
+            document.getElementById('output').textContent = "Generated ID: " + uniqueId;
+        }
+
+        // Function to generate Flower-style random ID with uppercase letters, digits, and symbols
+        function generateFlowerRandomString() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-!@$%^&*()_+=<>?';
+            let result = '';
+            for (let i = 0; i < 20; i++) {
+                const randomIndex = Math.floor(Math.random() * chars.length);
+                result += chars.charAt(randomIndex);
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
