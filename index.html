@@ -40,11 +40,11 @@
             let prefix = '';
             let randomString = '';
 
-            if (selectedType === 'current') {
-                prefix = 'current_'; // Prefix for 'Current' type ID
+            if (selectedType === 'id1') {
+                prefix = ''; // Prefix for 'Current' type ID
                 randomString = Math.random().toString(36).substring(2, 15).toUpperCase(); // Simple alphanumeric ID
-            } else if (selectedType === 'flower') {
-                prefix = 'FLOWER_'; // Prefix for 'Flower' type ID
+            } else if (selectedType === 'id2') {
+                prefix = ''; // Prefix for 'Flower' type ID
                 randomString = generateFlowerRandomString(); // Generate Flower-style ID with symbols
             }
 
